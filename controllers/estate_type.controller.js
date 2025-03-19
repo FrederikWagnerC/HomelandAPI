@@ -1,7 +1,7 @@
 import express from 'express';
-import { errorResponse, successResponse } from '../utils/responseUtils.js';
-import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/apiUtils.js';
-import { estateTypeModel as model } from '../models/estateTypeModel.js';
+import { errorResponse, successResponse } from '../utils/response.utils.js';
+import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/API.utils.js';
+import { estateTypeModel as model } from '../models/estate_type.model.js';
 
 export const estateTypeController = express.Router();
 const url = 'estate_types';

@@ -44,9 +44,7 @@ staffModel.init({
 }, {
     sequelize: dbConfig,
     modelName: 'staff',
-    underscored: false,
-    freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
+    underscored: true,
+    timestamps: true,
 
 })

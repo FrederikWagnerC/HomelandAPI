@@ -22,16 +22,14 @@ imageModel.init({
     },
 
     description: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
 
 }, {
     sequelize: dbConfig,
     modelName: 'image',
-    underscored: false,
-    freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
+    underscored: true,
+    timestamps: true,
 
 })

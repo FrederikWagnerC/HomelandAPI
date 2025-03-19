@@ -1,15 +1,15 @@
 import express from 'express';
-import { errorResponse, successResponse } from '../utils/responseUtils.js';
-import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/apiUtils.js';
-import { energyLabelModel as model } from '../models/energyLabelModel.js';
+import { errorResponse, successResponse } from '../utils/response.utils.js';
+import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/API.utils.js';
+import { estateImageRelModel as model } from '../models/estate_image_rel.model.js';
 
-export const energyLabelController = express.Router();
-const url = 'energy_labels';
+export const estateImageRelController = express.Router();
+const url = 'estate_image_rel';
 
-energyLabelController.get(`/${url}`, async (req, res) => {
+estateImageRelController.get(`/${url}`, async (req, res) => {
     try {
         const list = await model.findAll({
-            attributes: getQueryAttributes(req.query, 'id, name'),
+            attributes: getQueryAttributes(req.query, 'id, estate_id, image_id, is_main'),
             limit: getQueryLimit(req.query),
             order: getQueryOrder(req.query)
         });
@@ -22,7 +22,7 @@ energyLabelController.get(`/${url}`, async (req, res) => {
     }
 });
 
-energyLabelController.get(`/${url}/:id([0-9]+)`, async (req, res) => {
+estateImageRelController.get(`/${url}/:id([0-9]+)`, async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
         let details = await model.findByPk(id);
@@ -33,7 +33,7 @@ energyLabelController.get(`/${url}/:id([0-9]+)`, async (req, res) => {
     }
 });
 
-energyLabelController.post(`/${url}`, async (req, res) => {
+estateImageRelController.post(`/${url}`, async (req, res) => {
     try {
         const data = req.body;
         const result = await model.create(data);
@@ -43,7 +43,7 @@ energyLabelController.post(`/${url}`, async (req, res) => {
     }
 });
 
-energyLabelController.put(`/${url}/:id([0-9]+)`, async (req, res) => {
+estateImageRelController.put(`/${url}/:id([0-9]+)`, async (req, res) => {
     try {
         const { id } = req.params;
         const data = req.body;
@@ -58,7 +58,7 @@ energyLabelController.put(`/${url}/:id([0-9]+)`, async (req, res) => {
     }
 });
 
-energyLabelController.delete(`/${url}/:id([0-9]+)`, async (req, res) => {
+estateImageRelController.delete(`/${url}/:id([0-9]+)`, async (req, res) => {
     try {
         const { id } = req.params;
         const deleted = await model.destroy({ where: { id } });

@@ -1,22 +1,17 @@
 import express from 'express';
-import { errorResponse, successResponse } from '../utils/responseUtils.js';
-import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/apiUtils.js';
-import { reviewModel as model } from '../models/reviewModel.js';
-import { userModel } from '../models/userModel.js';
+import { errorResponse, successResponse } from '../utils/response.utils.js';
+import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/API.utils.js';
+import { energyLabelModel as model } from '../models/energy_label.model.js';
 
-export const reviewController = express.Router();
-const url = 'reviews';
+export const energyLabelController = express.Router();
+const url = 'energy_labels';
 
-reviewController.get(`/${url}`, async (req, res) => {
+energyLabelController.get(`/${url}`, async (req, res) => {
     try {
         const list = await model.findAll({
-            attributes: getQueryAttributes(req.query, 'id, subject, created_at'),
+            attributes: getQueryAttributes(req.query, 'id, name'),
             limit: getQueryLimit(req.query),
-            order: getQueryOrder(req.query),
-            include: {
-                model: userModel,
-                attributes: ['firstname', 'lastname', 'email']
-            }
+            order: getQueryOrder(req.query)
         });
         if (!list || list.length === 0) {
             return errorResponse(res, `No records found`, 404);
@@ -27,7 +22,7 @@ reviewController.get(`/${url}`, async (req, res) => {
     }
 });
 
-reviewController.get(`/${url}/:id([0-9]+)`, async (req, res) => {
+energyLabelController.get(`/${url}/:id([0-9]+)`, async (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
         let details = await model.findByPk(id);
@@ -38,7 +33,7 @@ reviewController.get(`/${url}/:id([0-9]+)`, async (req, res) => {
     }
 });
 
-reviewController.post(`/${url}`, async (req, res) => {
+energyLabelController.post(`/${url}`, async (req, res) => {
     try {
         const data = req.body;
         const result = await model.create(data);
@@ -48,7 +43,7 @@ reviewController.post(`/${url}`, async (req, res) => {
     }
 });
 
-reviewController.put(`/${url}/:id([0-9]+)`, async (req, res) => {
+energyLabelController.put(`/${url}/:id([0-9]+)`, async (req, res) => {
     try {
         const { id } = req.params;
         const data = req.body;
@@ -63,7 +58,7 @@ reviewController.put(`/${url}/:id([0-9]+)`, async (req, res) => {
     }
 });
 
-reviewController.delete(`/${url}/:id([0-9]+)`, async (req, res) => {
+energyLabelController.delete(`/${url}/:id([0-9]+)`, async (req, res) => {
     try {
         const { id } = req.params;
         const deleted = await model.destroy({ where: { id } });

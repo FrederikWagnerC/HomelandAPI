@@ -1,9 +1,11 @@
 import dbConfig from "../config/dbConfig.js";
 import { DataTypes, Model } from "sequelize";
+import { estateModel } from "./estate.model.js";
+import { userModel } from "./user.model.js";
 
-export class brandModel extends Model {}
+export class reviewModel extends Model {}
 
-brandModel.init({
+reviewModel.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -17,7 +19,7 @@ brandModel.init({
     },
 
     comment: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
 
@@ -52,15 +54,11 @@ brandModel.init({
     is_active: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        
     }
 
 }, {
     sequelize: dbConfig,
-    modelName: 'brand',
-    underscored: false,
-    freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
-
-})
+    modelName: 'review',
+    underscored: true,
+    timestamps: true,
+});

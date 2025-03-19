@@ -24,9 +24,7 @@ cityModel.init({
 }, {
     sequelize: dbConfig,
     modelName: 'city',
-    underscored: false,
-    freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
+    underscored: true,
+    timestamps: true,
 
 })

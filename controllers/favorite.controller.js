@@ -1,7 +1,7 @@
 import express from 'express';
-import { errorResponse, successResponse } from '../utils/responseUtils.js';
-import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/apiUtils.js';
-import { favoriteModel as model } from '../models/favoriteModel.js';
+import { errorResponse, successResponse } from '../utils/response.utils.js';
+import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/API.utils.js';
+import { favoriteModel as model } from '../models/favorite.model.js';
 
 export const favoriteController = express.Router();
 const url = 'favorites';

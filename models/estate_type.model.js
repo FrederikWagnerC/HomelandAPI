@@ -19,9 +19,7 @@ estate_typeModel.init({
 }, {
     sequelize: dbConfig,
     modelName: 'estate_type',
-    underscored: false,
-    freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
+    underscored: true,
+    timestamps: false,
 
 })

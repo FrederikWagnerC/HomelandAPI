@@ -1,8 +1,8 @@
 import express from 'express';
-import { userModel as model } from '../models/userModel.js';
-import { errorResponse, successResponse } from '../utils/responseUtils.js';
-import { Authorize } from '../utils/authUtils.js';
-import { getQueryAttributes, getQueryOrder } from '../utils/apiUtils.js';
+import { userModel as model } from '../models/user.model.js';
+import { errorResponse, successResponse } from '../utils/response.utils.js';
+import { Authorize } from '../utils/auth.utils.js';
+import { getQueryAttributes, getQueryOrder } from '../utils/API.utils.js';
 
 export const userController = express.Router();
 const url = 'users';

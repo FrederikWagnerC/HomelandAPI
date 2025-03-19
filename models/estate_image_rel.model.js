@@ -1,21 +1,20 @@
 import dbConfig from "../config/dbConfig.js";
 import { DataTypes, Model } from "sequelize";
 
-export class estate_image_relModel extends Model {}
+export class estateImageRelModel extends Model {}
 
-estate_image_relModel.init({
+estateImageRelModel.init({
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true,
-    },
-
+		type: DataTypes.INTEGER,
+		autoIncrement: true,
+		allowNull: false,
+		primaryKey: true
+	},
     estate_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'estate',
+            model: 'estateModel',
             key: 'id'
         }
     },
@@ -24,7 +23,7 @@ estate_image_relModel.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: 'image',
+            model: 'imageModel',
             key: 'id'
         }
     },
@@ -37,9 +36,8 @@ estate_image_relModel.init({
 }, {
     sequelize: dbConfig,
     modelName: 'estate_image_rel',
-    underscored: false,
+    underscored: true,
+    timestamps: true,
     freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
 
 })

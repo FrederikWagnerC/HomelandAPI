@@ -1,16 +1,18 @@
 import dbConfig from "../config/dbConfig.js";
 import { DataTypes, Model } from "sequelize";
+import { userModel } from "./user.model.js";
+import { estateModel } from "./estate.model.js";
+
 
 export class favoriteModel extends Model {}
 
 favoriteModel.init({
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true,
-    },
-
+		type: DataTypes.INTEGER,
+		autoIncrement: true,
+		allowNull: false,
+		primaryKey: true
+	},
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -32,9 +34,7 @@ favoriteModel.init({
 }, {
     sequelize: dbConfig,
     modelName: 'favorite',
-    underscored: false,
-    freezeTableName: true,
-    createdAt: true,
-    updatedAt: true,
+    underscored: true,
+    timestamps: true,
 
 })

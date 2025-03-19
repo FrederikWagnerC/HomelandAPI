@@ -11,7 +11,11 @@ const dbConfig = new Sequelize(
   {
     host: process.env.DBHOST,
     port: process.env.DBPORT,
-    dialect: 'mysql'
+    dialect: 'mysql',
+    define: {
+      charset: "utf8mb4",
+      collate: "utf8mb4_unicode_ci",
+    },
   }
 );
 

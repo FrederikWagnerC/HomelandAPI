@@ -1,7 +1,7 @@
 import express from 'express';
-import { errorResponse, successResponse } from '../utils/responseUtils.js';
-import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/apiUtils.js';
-import { estateModel as model, cityModel, energyLabelModel, estateImageRelModel, imageModel, typeModel } from '../models/index.js';
+import { errorResponse, successResponse } from '../utils/response.utils.js';
+import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/API.utils.js';
+import { estateModel as model, cityModel, energyLabelModel, estateImageRelModel, imageModel, estate_typeModel } from '../models/index.js';
 
 export const estateController = express.Router();
 const url = 'estates';
@@ -16,7 +16,7 @@ estateController.get(`/${url}`, async (req, res) => {
                 model: cityModel,
                 attributes: ['name', 'zipcode']
             }, {
-                model: typeModel,
+                model: estate_typeModel,
                 attributes: ['name']
             }, {
                 model: energyLabelModel,
@@ -48,7 +48,7 @@ estateController.get(`/${url}/:id([0-9]+)`, async (req, res) => {
                 model: energyLabelModel,
                 attributes: ['name']
             }, {
-                model: typeModel,
+                model: estate_typeModel,
                 attributes: ['name']
             }, {
                 model: imageModel,

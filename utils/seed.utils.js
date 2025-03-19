@@ -27,7 +27,7 @@ const seedFromCsv = async (fileName, model) => {
         return fileName;
     } catch (error) {
         await transaction.rollback();
-        console.error('Seeding error:', error);
+        console.error('Seeding error:', error.message);
         return false;
     }
 };

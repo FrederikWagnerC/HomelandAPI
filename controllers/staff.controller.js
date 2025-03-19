@@ -1,7 +1,7 @@
 import express from 'express';
-import { errorResponse, successResponse } from '../utils/responseUtils.js';
-import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/apiUtils.js';
-import { staffModel as model } from '../models/staffModel.js';
+import { errorResponse, successResponse } from '../utils/response.utils.js';
+import { getQueryAttributes, getQueryLimit, getQueryOrder } from '../utils/API.utils.js';
+import { staffModel as model } from '../models/staff.model.js';
 
 export const staffController = express.Router();
 const url = 'staff';
